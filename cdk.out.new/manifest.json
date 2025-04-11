@@ -1,0 +1,389 @@
+{
+  "version": "40.0.0",
+  "artifacts": {
+    "HighAvailabilityVPC.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "HighAvailabilityVPC.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "HighAvailabilityVPC": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "HighAvailabilityVPC.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6cd0c094c04448714d23d16aaaa1897b9531b3996a6cc6f5a39054d085ae13ad.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "HighAvailabilityVPC.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "HighAvailabilityVPC.assets"
+      ],
+      "metadata": {
+        "/HighAvailabilityVPC/HighAvailabilityVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPC20615178"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1RouteTableFCB8A4E2"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1RouteTableAssociation8E7F2332"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1DefaultRoute397D8B03"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1EIP03F87E28"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet1NATGateway662C34D5"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet2Subnet90D00118"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet2RouteTable710D2C5E"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet2RouteTableAssociationA1DC7FDC"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPublicSubnet2DefaultRouteE3196600"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet1Subnet9E98EB14"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet1RouteTable3E5C83AE"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet1RouteTableAssociation97C6B7FD"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet1DefaultRouteE7CC9DCC"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet2Subnet7B1D60F8"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet2RouteTable2CB95F14"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet2RouteTableAssociation7C2224D6"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCPrivateSubnet2DefaultRoute8839DB47"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCIGW93D1E722"
+          }
+        ],
+        "/HighAvailabilityVPC/HighAvailabilityVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighAvailabilityVPCVPCGW3581A7BB"
+          }
+        ],
+        "/HighAvailabilityVPC/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/HighAvailabilityVPC/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/HighAvailabilityVPC/Exports/Output{\"Ref\":\"HighAvailabilityVPC20615178\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefHighAvailabilityVPC20615178DBE49E9F"
+          }
+        ],
+        "/HighAvailabilityVPC/Exports/Output{\"Ref\":\"HighAvailabilityVPCPrivateSubnet1Subnet9E98EB14\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefHighAvailabilityVPCPrivateSubnet1Subnet9E98EB1419F94019"
+          }
+        ],
+        "/HighAvailabilityVPC/Exports/Output{\"Ref\":\"HighAvailabilityVPCPrivateSubnet2Subnet7B1D60F8\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefHighAvailabilityVPCPrivateSubnet2Subnet7B1D60F833E4CA61"
+          }
+        ],
+        "/HighAvailabilityVPC/Exports/Output{\"Ref\":\"HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefHighAvailabilityVPCPublicSubnet1Subnet97AEB9B44E48B74D"
+          }
+        ],
+        "/HighAvailabilityVPC/Exports/Output{\"Ref\":\"HighAvailabilityVPCPublicSubnet2Subnet90D00118\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefHighAvailabilityVPCPublicSubnet2Subnet90D00118209A79C0"
+          }
+        ],
+        "/HighAvailabilityVPC/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/HighAvailabilityVPC/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "HighAvailabilityVPC"
+    },
+    "HighAvailabilityApp.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "HighAvailabilityApp.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "HighAvailabilityApp": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "HighAvailabilityApp.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c32983e2eb42ad9f0805149bed9cf147912ef60f047a76ccc2baad10a186e4cc.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "HighAvailabilityApp.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "HighAvailabilityVPC",
+        "HighAvailabilityApp.assets"
+      ],
+      "metadata": {
+        "/HighAvailabilityApp/InstanceSG/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InstanceSG2AE1100C"
+          }
+        ],
+        "/HighAvailabilityApp/InstanceSG/from HighAvailabilityAppALBSG8881BA07:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InstanceSGfromHighAvailabilityAppALBSG8881BA0780A5512CAA"
+          }
+        ],
+        "/HighAvailabilityApp/ALBSG/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ALBSGB173E466"
+          }
+        ],
+        "/HighAvailabilityApp/LaunchTemplate/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LaunchTemplate04EC5460"
+          }
+        ],
+        "/HighAvailabilityApp/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
+        "/HighAvailabilityApp/ASG": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "desiredCapacity has been configured. Be aware this will reset the size of your AutoScalingGroup on every deployment. See https://github.com/aws/aws-cdk/issues/5215 [ack: @aws-cdk/aws-autoscaling:desiredCapacitySet]",
+            "trace": [
+              "Annotations.addMessage (/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/jsii-kernel-U7fKqV/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1608)",
+              "Annotations.addWarningV2 (/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/jsii-kernel-U7fKqV/node_modules/aws-cdk-lib/core/lib/annotations.js:1:825)",
+              "new AutoScalingGroup (/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/jsii-kernel-U7fKqV/node_modules/aws-cdk-lib/aws-autoscaling/lib/auto-scaling-group.js:1:17835)",
+              "Kernel._Kernel_create (/private/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/tmpb0qvnmke/lib/program.js:548:25)",
+              "Kernel.create (/private/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/tmpb0qvnmke/lib/program.js:218:93)",
+              "KernelHost.processRequest (/private/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/tmpb0qvnmke/lib/program.js:15471:36)",
+              "KernelHost.run (/private/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/tmpb0qvnmke/lib/program.js:15431:22)",
+              "Immediate._onImmediate (/private/var/folders/p5/h8_9wszd5_g6kd2znm13yj200000gn/T/tmpb0qvnmke/lib/program.js:15432:46)",
+              "process.processImmediate (node:internal/timers:476:21)"
+            ]
+          }
+        ],
+        "/HighAvailabilityApp/ASG/ASG": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ASG46ED3070"
+          }
+        ],
+        "/HighAvailabilityApp/ALB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ALBAEE750D2"
+          }
+        ],
+        "/HighAvailabilityApp/ALB/Listener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ALBListener3B99FF85"
+          }
+        ],
+        "/HighAvailabilityApp/ALB/Listener/TargetsGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ALBListenerTargetsGroup01D7716A"
+          }
+        ],
+        "/HighAvailabilityApp/HighCPUAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HighCPUAlarm56BE6E7D"
+          }
+        ],
+        "/HighAvailabilityApp/BackupVault/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackupVault3A9C5852"
+          }
+        ],
+        "/HighAvailabilityApp/BackupPlan/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackupPlanA8F64793"
+          }
+        ],
+        "/HighAvailabilityApp/BackupPlan/Selection/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackupPlanSelectionRoleFF9E5076"
+          }
+        ],
+        "/HighAvailabilityApp/BackupPlan/Selection/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackupPlanSelectionF2B21E7E"
+          }
+        ],
+        "/HighAvailabilityApp/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/HighAvailabilityApp/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/HighAvailabilityApp/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/HighAvailabilityApp/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "HighAvailabilityApp"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": "40.0.0",
+  "files": {
+    "c32983e2eb42ad9f0805149bed9cf147912ef60f047a76ccc2baad10a186e4cc": {
+      "source": {
+        "path": "HighAvailabilityApp.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "c32983e2eb42ad9f0805149bed9cf147912ef60f047a76ccc2baad10a186e4cc.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

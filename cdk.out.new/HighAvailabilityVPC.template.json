@@ -1,0 +1,774 @@
+{
+ "Resources": {
+  "HighAvailabilityVPC20615178": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/Resource"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/Subnet"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1RouteTableFCB8A4E2": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/RouteTable"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1RouteTableAssociation8E7F2332": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1RouteTableFCB8A4E2"
+    },
+    "SubnetId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1DefaultRoute397D8B03": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "HighAvailabilityVPCIGW93D1E722"
+    },
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1RouteTableFCB8A4E2"
+    }
+   },
+   "DependsOn": [
+    "HighAvailabilityVPCVPCGW3581A7BB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1EIP03F87E28": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/EIP"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet1NATGateway662C34D5": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "HighAvailabilityVPCPublicSubnet1EIP03F87E28",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "HighAvailabilityVPCPublicSubnet1DefaultRoute397D8B03",
+    "HighAvailabilityVPCPublicSubnet1RouteTableAssociation8E7F2332"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet1/NATGateway"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet2Subnet90D00118": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/Subnet"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet2RouteTable710D2C5E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/RouteTable"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet2RouteTableAssociationA1DC7FDC": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet2RouteTable710D2C5E"
+    },
+    "SubnetId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet2Subnet90D00118"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "HighAvailabilityVPCPublicSubnet2DefaultRouteE3196600": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "HighAvailabilityVPCIGW93D1E722"
+    },
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet2RouteTable710D2C5E"
+    }
+   },
+   "DependsOn": [
+    "HighAvailabilityVPCVPCGW3581A7BB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet1Subnet9E98EB14": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/Subnet"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet1RouteTable3E5C83AE": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/RouteTable"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet1RouteTableAssociation97C6B7FD": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet1RouteTable3E5C83AE"
+    },
+    "SubnetId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet1Subnet9E98EB14"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet1DefaultRouteE7CC9DCC": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1NATGateway662C34D5"
+    },
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet1RouteTable3E5C83AE"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet1/DefaultRoute"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet2Subnet7B1D60F8": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/Subnet"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet2RouteTable2CB95F14": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/RouteTable"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet2RouteTableAssociation7C2224D6": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet2RouteTable2CB95F14"
+    },
+    "SubnetId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet2Subnet7B1D60F8"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "HighAvailabilityVPCPrivateSubnet2DefaultRoute8839DB47": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "HighAvailabilityVPCPublicSubnet1NATGateway662C34D5"
+    },
+    "RouteTableId": {
+     "Ref": "HighAvailabilityVPCPrivateSubnet2RouteTable2CB95F14"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/PrivateSubnet2/DefaultRoute"
+   }
+  },
+  "HighAvailabilityVPCIGW93D1E722": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "HighAvailabilityVPC/HighAvailabilityVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/IGW"
+   }
+  },
+  "HighAvailabilityVPCVPCGW3581A7BB": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "HighAvailabilityVPCIGW93D1E722"
+    },
+    "VpcId": {
+     "Ref": "HighAvailabilityVPC20615178"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/HighAvailabilityVPC/VPCGW"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WOUQuCMBSFf4vvc6VC9CoS4UsMDV9jWzdc6hbuLhHxv6dY7el89+NwOTGNjge6D/hgQ3lvwlYJOpXIZUMWdQMZ06l6SZI9dMUywpxolSyd0ICr81QYh3DlogXvvUutNVJxVEb/yyuccrbGheOZIwx8JKxX7wX941wj9Av/CtuS75XiMrXuQONMCrDG9RJmwkasjd4lNEpoHDytUmHvNKoOaLHlBzjKhQj3AAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "HighAvailabilityVPC/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Outputs": {
+  "ExportsOutputRefHighAvailabilityVPC20615178DBE49E9F": {
+   "Value": {
+    "Ref": "HighAvailabilityVPC20615178"
+   },
+   "Export": {
+    "Name": "HighAvailabilityVPC:ExportsOutputRefHighAvailabilityVPC20615178DBE49E9F"
+   }
+  },
+  "ExportsOutputRefHighAvailabilityVPCPrivateSubnet1Subnet9E98EB1419F94019": {
+   "Value": {
+    "Ref": "HighAvailabilityVPCPrivateSubnet1Subnet9E98EB14"
+   },
+   "Export": {
+    "Name": "HighAvailabilityVPC:ExportsOutputRefHighAvailabilityVPCPrivateSubnet1Subnet9E98EB1419F94019"
+   }
+  },
+  "ExportsOutputRefHighAvailabilityVPCPrivateSubnet2Subnet7B1D60F833E4CA61": {
+   "Value": {
+    "Ref": "HighAvailabilityVPCPrivateSubnet2Subnet7B1D60F8"
+   },
+   "Export": {
+    "Name": "HighAvailabilityVPC:ExportsOutputRefHighAvailabilityVPCPrivateSubnet2Subnet7B1D60F833E4CA61"
+   }
+  },
+  "ExportsOutputRefHighAvailabilityVPCPublicSubnet1Subnet97AEB9B44E48B74D": {
+   "Value": {
+    "Ref": "HighAvailabilityVPCPublicSubnet1Subnet97AEB9B4"
+   },
+   "Export": {
+    "Name": "HighAvailabilityVPC:ExportsOutputRefHighAvailabilityVPCPublicSubnet1Subnet97AEB9B44E48B74D"
+   }
+  },
+  "ExportsOutputRefHighAvailabilityVPCPublicSubnet2Subnet90D00118209A79C0": {
+   "Value": {
+    "Ref": "HighAvailabilityVPCPublicSubnet2Subnet90D00118"
+   },
+   "Export": {
+    "Name": "HighAvailabilityVPC:ExportsOutputRefHighAvailabilityVPCPublicSubnet2Subnet90D00118209A79C0"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
