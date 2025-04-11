@@ -49,3 +49,4 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+docs/dev_to_blog.md
